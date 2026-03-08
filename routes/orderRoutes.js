@@ -6,12 +6,10 @@ const router = express.Router();
 
 // Criar pedido
 router.post("/order", async (req, res) => {
-
   try {
 
     const body = req.body;
 
-    // Mapping dos dados
     const order = {
       orderId: body.numeroPedido.split("-")[0],
       value: body.valorTotal,
@@ -30,6 +28,23 @@ router.post("/order", async (req, res) => {
   } catch (error) {
 
     res.status(500).json({ error: "Erro ao criar pedido" });
+
+  }
+});
+
+
+// Listar todos os pedidos  ⬅️ MOVER PARA CIMA
+router.get("/order/list", async (req, res) => {
+
+  try {
+
+    const orders = await Order.find();
+
+    res.json(orders);
+
+  } catch (error) {
+
+    res.status(500).json({ error: "Erro ao listar pedidos" });
 
   }
 
@@ -52,24 +67,6 @@ router.get("/order/:orderId", async (req, res) => {
   } catch (error) {
 
     res.status(500).json({ error: "Erro ao buscar pedido" });
-
-  }
-
-});
-
-
-// Listar pedidos
-router.get("/order/list", async (req, res) => {
-
-  try {
-
-    const orders = await Order.find();
-
-    res.json(orders);
-
-  } catch (error) {
-
-    res.status(500).json({ error: "Erro ao listar pedidos" });
 
   }
 
@@ -114,6 +111,5 @@ router.delete("/order/:orderId", async (req, res) => {
   }
 
 });
-
 
 export default router;
