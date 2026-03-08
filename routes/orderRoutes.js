@@ -4,7 +4,7 @@ import Order from "../models/Order.js";
 const router = express.Router();
 
 
-// Criar pedido
+// cria o pedido
 router.post("/order", async (req, res) => {
   try {
 
@@ -33,7 +33,7 @@ router.post("/order", async (req, res) => {
 });
 
 
-// Listar todos os pedidos  ⬅️ MOVER PARA CIMA
+// lista todos os pedidos
 router.get("/order/list", async (req, res) => {
 
   try {
@@ -51,7 +51,7 @@ router.get("/order/list", async (req, res) => {
 });
 
 
-// Buscar pedido
+// busca pedido baseado no orderId
 router.get("/order/:orderId", async (req, res) => {
 
   try {
@@ -73,7 +73,7 @@ router.get("/order/:orderId", async (req, res) => {
 });
 
 
-// Atualizar pedido
+// atualiza pedido baseado no orderId
 router.put("/order/:orderId", async (req, res) => {
 
   try {
@@ -95,7 +95,7 @@ router.put("/order/:orderId", async (req, res) => {
 });
 
 
-// Deletar pedido
+// deleta pedido baseado no orderId
 router.delete("/order/:orderId", async (req, res) => {
 
   try {

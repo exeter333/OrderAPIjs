@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// cria o schema do item do pedido (productId, quantity, price)
 const ItemSchema = new mongoose.Schema({
   productId: {
     type: Number,
@@ -15,6 +16,7 @@ const ItemSchema = new mongoose.Schema({
   }
 });
 
+// cria o schema do pedido (orderId, value, creationDate, items)
 const OrderSchema = new mongoose.Schema({
   orderId: {
     type: String,
